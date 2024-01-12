@@ -41,7 +41,7 @@ def index():
             'STT': range(1, len(program_names) + 1),
             'Đài truyền hình': [program_type] * len(program_names),
             'Nội dung': program_names,
-            'Danh mục': len(program_names),
+            'Danh mục': "",
             'video_link': video_links,
             'ngày_giờ': pd.to_datetime(datetime_list, format='%d%m%y %H:%M:%S').strftime('%Y-%m-%d %H:%M:%S')
         })
