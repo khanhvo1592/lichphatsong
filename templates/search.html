@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tìm Kiếm Chương Trình</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, #654ea3, #eaafc8);
+      /* Gradient từ tím đến than đen */
+      color: #fff;
+      /* Màu chữ trắng */
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.5);
+      /* Nền mờ cho container */
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h1 class="mb-4">Tìm Kiếm Chương Trình</h1>
+    <!-- Nút chuyển về trang chủ -->
+    <a href="/" class="btn btn-secondary mb-3">Trang Chủ</a>
+    <form method="post" action="/search" class="mb-4">
+      <div class="form-group">
+        <input type="text" name="search_term" class="form-control" placeholder="Tên chương trình">
+      </div>
+      <div class="form-group">
+        <input type="date" name="start_date" class="form-control">
+      </div>
+      <div class="form-group">
+        <input type="date" name="end_date" class="form-control">
+      </div>
+      <div class="form-group">
+        <select name="program_type" class="form-control">
+          <option value="1">Truyền hình</option>
+          <option value="2">Phát thanh</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+    </form>
+
+    <!-- Phần hiển thị kết quả tìm kiếm -->
+    <div id="search-results"></div>
+    <footer class="mt-4">
+      <p>Author: Võ Quốc Khánh - <a href="mailto:khanhvo1592@gmail.com">khanhvo1592@gmail.com</a></p>
+    </footer>
+  </div>
+
+
+  <!-- Optional Bootstrap JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('form').on('submit', function (event) {
+        event.preventDefault(); // Ngăn chặn hành vi submit mặc định của form
+
+        $.ajax({
+          url: '/search', // URL tới route xử lý tìm kiếm trên server
+          type: 'post',
+          data: $(this).serialize(), // Dữ liệu từ form
+          success: function (data) {
+            // Cập nhật DOM với kết quả tìm kiếm
+            $('#search-results').html(''); // Xóa kết quả tìm kiếm cũ
+            if (Array.isArray(data) && data.length) {
+              data.forEach(function (item) {
+                $('#search-results').append('<p>' + item['ngày_giờ'] + ' - ' + item['Nội dung'] + '</p>'); // Cập nhật với mỗi kết quả
+              });
+            } else {
+              $('#search-results').html('<p>Không tìm thấy kết quả.</p>');
+            }
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
