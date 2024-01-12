@@ -45,7 +45,22 @@ def index():
             'video_link': video_links,
             'ngày_giờ': pd.to_datetime(datetime_list, format='%d%m%y %H:%M:%S').strftime('%Y-%m-%d %H:%M:%S')
         })
-        
+           # Đọc dữ liệu hiện có từ file JSON
+        json_output_file_path = 'data/output.json'
+        if os.path.exists(json_output_file_path):
+            with open(json_output_file_path, 'r', encoding='utf-8') as json_file:
+                existing_data = json.load(json_file)
+        else:
+            existing_data = []
+
+        # Chuyển DataFrame thành dạng từ điển và thêm vào dữ liệu hiện có
+        data_to_add = output_df.to_dict(orient='records')
+        existing_data.extend(data_to_add)
+
+        # Lưu tất cả dữ liệu vào file JSON
+        with open(json_output_file_path, 'w', encoding='utf-8') as json_file:
+            json.dump(existing_data, json_file, ensure_ascii=False, indent=4)
+   
         temp_output_file_path = 'temp_output.xlsx'
         output_df.to_excel(temp_output_file_path, index=False)
         
