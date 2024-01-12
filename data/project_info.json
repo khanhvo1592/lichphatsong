@@ -54,5 +54,9 @@
     {
         "name": "Sắc màu văn học",
         "shortname": "smvh-20h"
+    },
+    {
+        "name": "Bản tin phòng chống thiên tai dịch bệnh",
+        "shortname": "bt15h"
     }
 ]
