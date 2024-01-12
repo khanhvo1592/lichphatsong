@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Upload và Xử lý File</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Optional Bootstrap JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background: linear-gradient(to right, #654ea3, #eaafc8);
+      /* Gradient từ tím đến than đen */
+      color: #fff;
+      /* Màu chữ trắng */
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.5);
+      /* Nền mờ cho container */
+      padding: 20px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h1 class="mb-4">Xử lý lịch phát sóng</h1>
+    <form method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="date_input">Nhập ngày và tháng (ddmm):</label>
+        <input type="text" id="date_input" name="date_input" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="program_type">Chọn loại chương trình:</label>
+        <select id="program_type" name="program_type" class="form-control">
+          <option value="1">Truyền hình</option>
+          <option value="2">Phát thanh</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="input_data">Nhập dữ liệu:</label>
+        <textarea id="input_data" name="input_data" class="form-control" rows="10" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Tạo Excel</button>
+    </form>
+  </div>
+</body>
+
+</html>
