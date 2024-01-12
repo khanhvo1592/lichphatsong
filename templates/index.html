@@ -15,16 +15,53 @@
   <style>
     body {
       background: linear-gradient(to right, #654ea3, #eaafc8);
-      /* Gradient từ tím đến than đen */
       color: #fff;
-      /* Màu chữ trắng */
+    }
+
+    .navbar {
+      border-bottom: 3px solid #8f6878;
+      /* Thêm đường viền dưới navbar */
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.2em;
+      /* Tăng cỡ chữ cho brand */
+    }
+
+    .nav-link {
+      font-size: 1.1em;
+      /* Tăng cỡ chữ cho các link */
     }
 
     .container {
       background-color: rgba(0, 0, 0, 0.5);
-      /* Nền mờ cho container */
       padding: 20px;
       border-radius: 10px;
+      margin-top: 30px;
+      /* Tạo khoảng cách từ navbar */
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+      /* Tăng khoảng cách giữa các form group */
+    }
+
+    label {
+      font-weight: bold;
+      /* Làm đậm chữ cho label */
+    }
+
+    button {
+      background-color: #864862;
+      /* Thay đổi màu nút bấm */
+      border-color: #654ea3;
+    }
+
+    button:hover {
+      background-color: #654ea3;
+      /* Màu khi hover */
+      border-color: #864862;
     }
 
     footer {
@@ -33,27 +70,49 @@
       font-size: 14px;
     }
   </style>
+
 </head>
 
 <body>
+  <!-- Navbar chiếm toàn bộ chiều rộng -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid"> <!-- Sử dụng container-fluid cho full width -->
+      <a class="navbar-brand" href="/">Update Schedule TV</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Trang Chủ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/search">Tìm kiếm</a>
+          </li>
+        </ul>
+      </div>
+  </nav>
+
   <div class="container mt-5">
-    <h1 class="mb-4">Cập nhật lịch phát sóng</h1>
-    <a href="/search" class="btn btn-secondary mb-3">Tìm kiếm</a>
+    <h1>Update lịch phát sóng</h1>
     <form method="post" enctype="multipart/form-data">
       <div class="form-group">
-        <label for="date_input">Nhập ngày và tháng (ddmm):</label>
-        <input type="text" id="date_input" name="date_input" class="form-control" required>
+        <label for="date_input">Nhập ngày tháng:</label>
+        <input type="text" id="date_input" name="date_input" placeholder="<<DDMM>>" class="form-control" required>
       </div>
       <div class="form-group">
-        <label for="program_type">Chọn loại chương trình:</label>
+        <label for="program_type">Thể loại:</label>
         <select id="program_type" name="program_type" class="form-control">
           <option value="1">Truyền hình</option>
           <option value="2">Phát thanh</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="input_data">Nhập dữ liệu:</label>
-        <textarea id="input_data" name="input_data" class="form-control" rows="10" required></textarea>
+        <label for="input_data">Lịch phát sóng:</label>
+        <textarea id="input_data" name="input_data" class="form-control" rows="10"
+          placeholder="Dữ liệu mẫu ---> 00:00: Tên Chương trình" required></textarea>
       </div>
       <button type="submit" class="btn btn-primary">Download Excel</button>
     </form>
