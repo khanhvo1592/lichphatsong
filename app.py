@@ -34,7 +34,7 @@ def index():
             program_name = line[5:].strip().replace(':', '')
             program_names.append(program_name)
 
-            video_link = create_video_link(program_name, projects_info, date_str_for_url)
+            video_link = create_video_link(program_name, projects_info, date_str_for_url, program_type)
             video_links.append(video_link)
 
         output_df = pd.DataFrame({
@@ -58,12 +58,15 @@ def remove_vietnamese_accents(text):
     return ''.join(c for c in unicodedata.normalize('NFD', text) if unicodedata.category(c) != 'Mn')
 
 # Hàm tạo video link mới
-def create_video_link(name, projects_info, date_str_for_url):
+def create_video_link(name, projects_info, date_str_for_url, program_type):
     name_no_accents = remove_vietnamese_accents(name).lower().replace(" ", "")
     for project in projects_info:
         project_name_no_accents = remove_vietnamese_accents(project['name']).lower().replace(" ", "")
         if project_name_no_accents == name_no_accents:
-            return f"https://60acee235f4d5.streamlock.net:443/VODHGTV/definst/VIDEO/mp4:{project['shortname']}-{date_str_for_url}.mp4/playlist.m3u8"
+            if program_type == '1':  # Truyền hình
+                return f"https://60acee235f4d5.streamlock.net:443/VODHGTV/definst/VIDEO/mp4:{project['shortname']}-{date_str_for_url}.mp4/playlist.m3u8"
+            elif program_type == '2':  # Phát thanh
+                return f"https://60acee235f4d5.streamlock.net:443/VODHGTV/definst/AUDIO/mp3:{project['shortname']}-{date_str_for_url}.mp3/playlist.m3u8"
     return ""
 
 if __name__ == '__main__':

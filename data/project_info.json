@@ -22,5 +22,37 @@
     {
         "name": "Cảnh báo tiêu dùng",
         "shortname": "cbtd"
+    },
+    {
+        "name": "Thời sự sáng",
+        "shortname": "tss"
+    },
+    {
+        "name": "Thời sự trưa",
+        "shortname": "tst"
+    },
+    {
+        "name": "Thời sự trưa",
+        "shortname": "tsc"
+    },
+    {
+        "name": "Thời sự trưa",
+        "shortname": "tsc"
+    },
+    {
+        "name": "Chương trình tam nông",
+        "shortname": "tamnong"
+    },
+    {
+        "name": "Chương trình thiếu nhi",
+        "shortname": "thieunhi"
+    },
+    {
+        "name": "Alo bác sĩ ơi",
+        "shortname": "alo"
+    },
+    {
+        "name": "Sắc màu văn học",
+        "shortname": "smvh-20h"
     }
 ]
