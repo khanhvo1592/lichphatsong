@@ -27,9 +27,9 @@
       padding: 40px;
       /* Padding lớn hơn */
       border-radius: 10px;
-      width: 50%;
+      width: 80%;
       /* Chiều rộng của container */
-      max-width: 500px;
+      max-width: 800px;
       /* Giới hạn chiều rộng tối đa */
     }
 
@@ -38,7 +38,7 @@
     input[type="submit"] {
       width: 100%;
       /* Chiều rộng tối đa cho các input */
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       /* Khoảng cách giữa các input */
     }
 
@@ -67,13 +67,46 @@
 
 <body>
   <div class="container">
-    <form action="/login" method="post">
-      <input type="text" name="username" placeholder="Username" class="form-control">
-      <input type="password" name="password" placeholder="Password" class="form-control">
-      <input type="submit" value="Đăng Nhập" class="form-control">
+    <form action="/login" method="post" class="needs-validation" novalidate>
+      <div class="form-group">
+        <input type="text" name="username" class="form-control" id="username" placeholder="Username" required>
+        <div class="invalid-feedback">Vui lòng nhập tên người dùng.</div>
+      </div>
+
+      <div class="form-group">
+        <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+        <div class="invalid-feedback">Vui lòng nhập mật khẩu.</div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block">Đăng Nhập</button>
     </form>
   </div>
 
+  <!-- Bootstrap JS và các script liên quan -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // JavaScript để kích hoạt xác thực Bootstrap
+    (function () {
+      'use strict';
+      window.addEventListener('load', function () {
+        // Lấy tất cả các form cần xác thực
+        var forms = document.getElementsByClassName('needs-validation');
+        // Lặp qua chúng và ngăn ngừa nộp khi có lỗi
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
 </body>
+
 
 </html>
