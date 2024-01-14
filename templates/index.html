@@ -98,14 +98,16 @@
 
   <div class="container mt-5">
     <h1>Update lịch</h1>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
       <div class="form-group">
         <label for="date_input">Nhập ngày tháng:</label>
-        <input type="text" id="date_input" name="date_input" placeholder="<<DDMM>>" class="form-control" required>
+        <input type="text" id="date_input" name="date_input" placeholder="ddmm (Ví dụ: 0101)" class="form-control"
+          pattern="\d{4}" title="Nhập định dạng ddmm (Ví dụ: 0101)" required>
+        <small class="form-text text-muted">Định dạng ngày tháng: ddmm (Ví dụ: 0101).</small>
       </div>
       <div class="form-group">
         <label for="program_type">Thể loại:</label>
-        <select id="program_type" name="program_type" class="form-control">
+        <select id="program_type" name="program_type" class="form-control" required>
           <option value="1">Truyền hình</option>
           <option value="2">Phát thanh</option>
         </select>
@@ -113,15 +115,37 @@
       <div class="form-group">
         <label for="input_data">Lịch phát sóng:</label>
         <textarea id="input_data" name="input_data" class="form-control" rows="10"
-          placeholder="Dữ liệu mẫu ---> 00:00: Tên Chương trình" required></textarea>
+          placeholder="Ví dụ: 00:00 Nội dung chương trình" pattern="^(\d{2}:\d{2} .+\n?)+$" required></textarea>
+        <div class="invalid-feedback">Mỗi dòng phải bắt đầu bằng thời gian theo định dạng hh:mm.</div>
+        <small class="form-text text-muted">Mỗi dòng phải bắt đầu bằng thời gian theo định dạng hh:mm (ví dụ: 00:00 Nội
+          dung
+          chương trình).</small>
       </div>
       <button type="submit" class="btn btn-primary">Download Excel</button>
     </form>
     <footer class="mt-4">
-      <p>Author: Võ Quốc Khánh - <a href="mailto:khanhvo1592@gmail.com">khanhvo1592@gmail.com</a></p>
+      <!-- Footer contents unchanged -->
     </footer>
-  </div>
 
+    <script>
+      (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+          // Lấy tất cả các form cần xác thực
+          var forms = document.getElementsByClassName('needs-validation');
+          // Lặp qua chúng và ngăn chặn việc nộp form nếu có lỗi
+          var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
+              if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
 </body>
 
 </html>

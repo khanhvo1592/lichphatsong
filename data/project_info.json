@@ -32,11 +32,23 @@
         "shortname": "tst"
     },
     {
-        "name": "Thời sự trưa",
+        "name": "trực tiếp Thời sự sáng",
+        "shortname": "tss"
+    },
+    {
+        "name": "trực tiếp Thời sự trưa",
+        "shortname": "tst"
+    },
+    {
+        "name": "trực tiếp Thời sự chiều",
         "shortname": "tsc"
     },
     {
         "name": "Thời sự trưa",
+        "shortname": "tst"
+    },
+    {
+        "name": "Thời sự chiều",
         "shortname": "tsc"
     },
     {
@@ -58,5 +70,13 @@
     {
         "name": "Bản tin phòng chống thiên tai dịch bệnh",
         "shortname": "bt15h"
+    },
+    {
+        "name": "Pháp luật với công dân",
+        "shortname": "plvcd"
+    },
+    {
+        "name": "Chương trình tam nông",
+        "shortname": "tamnong"
     }
 ]
