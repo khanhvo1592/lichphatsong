@@ -9,6 +9,8 @@ def search_programs(filename, search_term=None, start_date=None, end_date=None, 
         results = []
         for program in data:
             # Kiểm tra tên chương trình
+            '''su dung
+            '''
             if search_term and search_term.lower() not in program['Nội dung'].lower():
                 continue
 
